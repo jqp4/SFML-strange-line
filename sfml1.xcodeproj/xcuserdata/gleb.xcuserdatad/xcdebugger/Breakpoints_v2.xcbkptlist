@@ -14,10 +14,10 @@
             filePath = "sfml1/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "main()"
-            landmarkType = "9">
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "sin_line(line, n)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
