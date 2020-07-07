@@ -20,6 +20,18 @@ int iteration = 0;
 
 
 class Line{
+private:
+    double get_angel(double x, double y){
+        y *= -1;
+        if (x >= 0){
+            if (y >= 0) return acos(x);
+            else return 2 * M_PI - acos(x);
+        } else {
+            if (y >= 0) return M_PI - acos(-x);
+            else return M_PI + acos(-x);
+        }
+    }
+    
 public:
     struct Point { double x, y, xn, yn, a; } * ghost;
     struct Mouse { sf::Vector2i lastpos, pos; } mouse;
@@ -102,28 +114,14 @@ public:
             ghost[settings.n - 1].a  = M_PI / 2;
             
             for (int i = 0; i < settings.n; i++){
-                int wx = int(ghost[i].x), wy = int(ghost[i].y);
-                //int wxn = zln[i].xn * settings.htn, wyn = zln[i].yn * settings.htn;
+                int wx = int(ghost[i].x);
+                int wy = int(ghost[i].y);
+                int wxn = ghost[i].xn * settings.htn;
+                int wyn = ghost[i].yn * settings.htn;
                 skin[i*2].color = sf::Color::Magenta;
-                skin[i*2].position = sf::Vector2f(wx - ghost[i].xn * settings.htn, wy - ghost[i].yn * settings.htn);
-                skin[i*2 + 1].position = sf::Vector2f(wx + ghost[i].xn * settings.htn, wy + ghost[i].yn * settings.htn);
+                skin[i*2].position = sf::Vector2f(wx - wxn, wy - wyn);
+                skin[i*2+1].position = sf::Vector2f(wx + wxn, wy + wyn);
             }
-        }
-    }
-    
-    /*~Line(){
-        free(ghost);
-    }*/
-    
-private:
-    double get_angel(double x, double y){
-        y *= -1;
-        if (x >= 0){
-            if (y >= 0) return acos(x);
-            else return 2 * M_PI - acos(x);
-        } else {
-            if (y >= 0) return M_PI - acos(-x);
-            else return M_PI + acos(-x);
         }
     }
 };
@@ -189,7 +187,6 @@ int main(){
         iteration ++;
         window.clear();
         line.update(sf::Mouse::getPosition(window));
-        
         
         window.draw(axes, 6, sf::Lines);
         if (debug){

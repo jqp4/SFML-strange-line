@@ -280,7 +280,6 @@
 				HEADER_SEARCH_PATHS = /usr/local/Cellar/sfml/2.5.1/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ExternalLibraries/SFML/lib",
 					/usr/local/Cellar/sfml/2.5.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -294,7 +293,6 @@
 				HEADER_SEARCH_PATHS = /usr/local/Cellar/sfml/2.5.1/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ExternalLibraries/SFML/lib",
 					/usr/local/Cellar/sfml/2.5.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
